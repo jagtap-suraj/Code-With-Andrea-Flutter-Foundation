@@ -3,17 +3,17 @@ import 'dart:async';
 import 'package:ecommerce_app/src/app.dart';
 import 'package:ecommerce_app/src/localization/string_hardcoded.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:go_router/go_router.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 void main() async {
   // * For more info on error handling, see:
   // * https://docs.flutter.dev/testing/errors
   await runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
+    // turn off the # in the URLs on the web
+    setPathUrlStrategy();
     // * Entry point of the app
-
-    // * Remove the # symbol from the URL
-    usePathUrlStrategy();
     runApp(const MyApp());
 
     // * This code will present some error UI if any uncaught exception happens
