@@ -1,7 +1,6 @@
 import 'dart:math';
 
-import 'package:ecommerce_app/src/constants/test_products.dart';
-import 'package:ecommerce_app/src/features/products/data/fake_product_repository.dart';
+import 'package:ecommerce_app/src/features/products/data/fake_products_repository.dart';
 import 'package:ecommerce_app/src/features/products/presentation/products_list/product_card.dart';
 import 'package:ecommerce_app/src/localization/string_hardcoded.dart';
 import 'package:ecommerce_app/src/routing/app_router.dart';
@@ -17,7 +16,7 @@ class ProductsGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: Read from data source
-    final products = FakeProductRepository.instance.getProductList();
+    final products = FakeProductsRepository.instance.getProductsList();
     return products.isEmpty
         ? Center(
             child: Text(
@@ -33,9 +32,7 @@ class ProductsGrid extends StatelessWidget {
                 product: product,
                 onPressed: () => context.goNamed(
                   AppRoute.product.name,
-                  pathParameters: {
-                    'id': product.id
-                  },
+                  pathParameters: {'id': product.id},
                 ),
               );
             },
